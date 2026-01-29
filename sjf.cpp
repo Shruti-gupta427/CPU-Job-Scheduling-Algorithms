@@ -14,7 +14,7 @@ int main() {
         cout << "Enter Arrival Time and Burst Time for P" << pid[i] << ": ";
         cin >> AT[i] >> BT[i];
     }
-
+       float avgTAT = 0, avgWT = 0;
     int completed = 0;
     int currentTime = 0;
 
@@ -35,6 +35,9 @@ int main() {
         CT[idx]=currentTime + BT[idx];
         TAT[idx]=CT[idx] - AT[idx];
         WT[idx]=TAT[idx] - BT[idx];
+        avgWT += WT[idx];
+        avgTAT += TAT[idx];
+
 
         currentTime = CT[idx];
         done[idx] = true;
@@ -50,6 +53,8 @@ int main() {
              << TAT[i] << "\t"
              << WT[i] << "\n";
     }
+      cout << "Average Waiting Time = " << avgWT / n;
+    cout << " Average Turnaround Time = " << avgTAT / n << endl;
    
 
     return 0;

@@ -8,7 +8,7 @@ int main()
     cin >> n;
 
     vector<int> pid(n), AT(n), BT(n), CT(n), TAT(n), WT(n), PR(n);
-
+    float avgTAT = 0, avgWT = 0;
     for (int i = 0; i < n; i++)
     {
         pid[i] = i + 1;
@@ -41,6 +41,8 @@ int main()
         WT[idx] = TAT[idx] - BT[idx];
 
         currenttime = CT[idx];
+        avgWT += WT[idx];
+        avgTAT += TAT[idx];
         done[idx] = true;
         completed++;
     }
@@ -55,5 +57,7 @@ int main()
              << TAT[i] << "\t"
              << WT[i] << "\n";
     }
+    cout << "Average Waiting Time = " << avgWT / n;
+    cout << " Average Turnaround Time = " << avgTAT / n << endl;
     return 0;
 }
